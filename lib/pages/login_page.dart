@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'register_page.dart';
 import 'home_page.dart';
+import 'register_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -76,7 +76,13 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                     onPressed: () async {
-                      // Add your login logic here
+                      // Here, you can add your login logic
+                      // If login is successful, navigate to the HomePage
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const HomePage()),
+                      );
                     },
                     child: const Text('Login'),
                   ),
@@ -91,7 +97,7 @@ class _LoginPageState extends State<LoginPage> {
                         );
                       },
                       child: const Text(
-                        "Don't have an account? Create one",
+                        "Don't have an account? Register",
                         style: TextStyle(color: Colors.blue),
                       ),
                     ),
