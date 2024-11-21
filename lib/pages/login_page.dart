@@ -19,12 +19,12 @@ class _LoginPageState extends State<LoginPage> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        centerTitle: true,
+        centerTitle: false,
         title: const Text(
           'HomeEaze',
           style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 24,
+            fontWeight: FontWeight.normal,
+            fontSize: 18,
             color: Colors.black,
           ),
         ),
@@ -34,42 +34,89 @@ class _LoginPageState extends State<LoginPage> {
           Align(
             alignment: Alignment.bottomCenter,
             child: Padding(
-              padding: const EdgeInsets.all(20.0),
+              padding: const EdgeInsets.all(40.0),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text(
                     'Login',
-                    style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
                   ),
-                  const SizedBox(height: 8),
+                  const SizedBox(height: 1),
                   const Text(
                     'Login into your account',
-                    style: TextStyle(fontSize: 16, color: Colors.grey),
+                    style: TextStyle(fontSize: 16, color: Colors.black),
                   ),
                   const SizedBox(height: 20),
+
                   TextField(
                     controller: emailController,
-                    decoration: const InputDecoration(
-                      prefixIcon: Icon(Icons.email),
+                    decoration: InputDecoration(
+                      prefixIcon: const Icon(Icons.email),
                       labelText: 'Email',
-                      border: OutlineInputBorder(),
+                      labelStyle: TextStyle(
+                        color: Color.fromRGBO(132, 132, 132, 1), // Change the label text color to red
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(
+                          color: Color.fromRGBO(202, 202, 202, 1), //border: 1px solid rgba(202, 202, 202, 1) Default border color
+                        ),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(
+                          color: Color.fromRGBO(202, 202, 202, 1), // Border color when enabled
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(
+                          color: Color.fromRGBO(94, 105, 207, 0.6), // Border color when focused
+                          width: 2.0, // Optional: increase border thickness when focused
+                        ),
+                      ),
                     ),
                   ),
+
                   const SizedBox(height: 16),
+
                   TextField(
                     controller: passwordController,
                     obscureText: true,
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                       prefixIcon: Icon(Icons.lock),
                       labelText: 'Password',
-                      border: OutlineInputBorder(),
+                      labelStyle: TextStyle(
+                        color: Color.fromRGBO(132, 132, 132, 1), // Change the label text color to red
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(
+                          color: Color.fromRGBO(202, 202, 202, 1), //border: 1px solid rgba(202, 202, 202, 1) Default border color
+                        ),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(
+                          color: Color.fromRGBO(202, 202, 202, 1), // Border color when enabled
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(
+                          color: Color.fromRGBO(94, 105, 207, 0.6), // Border color when focused
+                          width: 2.0, // Optional: increase border thickness when focused
+                        ),
+                      ),
+
                     ),
                   ),
                   const SizedBox(height: 20),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
+                      backgroundColor: Color.fromRGBO(94, 105, 207, 1.0),
                       minimumSize: const Size(double.infinity, 50),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
@@ -84,7 +131,13 @@ class _LoginPageState extends State<LoginPage> {
                             builder: (context) => const HomePage()),
                       );
                     },
-                    child: const Text('Login'),
+                    child: const Text(
+                      'Login',
+                      style: TextStyle(
+                        color: Colors.white, // Set the text color to white
+                        fontWeight: FontWeight.normal, // Optional: make text bold
+                      ),
+                    ),
                   ),
                   const SizedBox(height: 10),
                   Center(
