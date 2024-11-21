@@ -66,7 +66,7 @@ class _IntroPageState extends State<IntroPage> {
                               style: TextStyle(
                                 fontSize: 16, // Smaller font size for the second line
                                 fontWeight: FontWeight.w300, // Normal font weight
-                                fontStyle: FontStyle.normal, // Regular font style
+                                fontStyle: FontStyle.italic, // Regular font style
                                 color: Color.fromRGBO(32, 43, 147, 1), // Black text color for the second line
                               ),
                               textAlign: TextAlign.center, // Center the text horizontally
