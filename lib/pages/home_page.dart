@@ -5,6 +5,8 @@ import 'settings_page.dart';
 import '../widgets/custom_navigation_bar.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -13,7 +15,7 @@ class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
 
   final List<Widget> _pages = [
-    Center(child: Text('Home Page')),
+    const Center(child: Text('Home Page')),
     UserPage(),
     SettingsPage(),
   ];

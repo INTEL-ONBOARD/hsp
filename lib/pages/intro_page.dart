@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'login_page.dart';
 
 class IntroPage extends StatefulWidget {
+  const IntroPage({super.key});
+
   @override
   _IntroPageState createState() => _IntroPageState();
 }
@@ -11,7 +13,7 @@ class _IntroPageState extends State<IntroPage> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 3), () {
+    Timer(const Duration(seconds: 3), () {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => LoginPage()),
@@ -21,7 +23,7 @@ class _IntroPageState extends State<IntroPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(
         child: Text(
           'Welcome to MyApp',
