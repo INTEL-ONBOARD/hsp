@@ -15,22 +15,22 @@ class _AirConditionsHomePageState extends State<AirConditionsHomePage> {
       "name": "John Doe",
       "city": "Minuangoda",
       "rating": 4.5,
-      "description": "Experienced AC technician with 5+ years of experience.",
-      "price": "\$50/hr",
+      "description": "Experienced MAINLY AC technician with 5+  years of experience. Experienced AC technician with 5+  years of experience. Experienced AC technician with 5+  years of experience. Experienced AC technician with 5+  years of experience.",
+      "price": "500000",
     },
     {
       "name": "Jane Smith",
       "city": "Minuangoda",
       "rating": 4.8,
       "description": "Specialist in quick repairs and installations.",
-      "price": "\$55/hr",
+      "price": "55",
     },
     {
       "name": "Robert Brown",
       "city": "Minuangoda",
       "rating": 4.6,
       "description": "Affordable and reliable AC repair services.",
-      "price": "\$45/hr",
+      "price": "4500",
     },
   ];
 
@@ -55,65 +55,112 @@ class _AirConditionsHomePageState extends State<AirConditionsHomePage> {
           return Card(
             color: const Color.fromRGBO(249, 249, 249, 1), //242, 242, 242, 1 for border
             margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16),
+              side: const BorderSide(
+                color: Color.fromRGBO(242, 242, 242, 1),
+                width: 1,
+              ),
+            ),
             child: Padding(
               padding: const EdgeInsets.all(16.0),
-              child: Column(
+              child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    worker['name'],
-                    style: const TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
+                  // Left Column
+                  Expanded(
+                    flex: 2, // Adjust the space taken by the left column
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          worker['name'],
+                          style: const TextStyle(
+                            fontSize: 25,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                        Text(
+                          worker['city'],
+                          style: const TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.normal,
+                            color: Color.fromRGBO(156, 156, 156, 1),
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          worker['description'],
+                          style: const TextStyle(fontSize: 14, color: Color.fromRGBO(218, 218, 218, 1)),
+                        ),
+                      ],
                     ),
                   ),
-                  const SizedBox(height: 8),
-                  Row(
-                    children: [
-                      const Icon(Icons.star, color: Colors.amber),
-                      const SizedBox(width: 4),
-                      Text(
-                        "${worker['rating']}",
-                        style: const TextStyle(fontSize: 16),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    worker['description'],
-                    style: const TextStyle(fontSize: 14, color: Colors.grey),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    "Price: ${worker['price']}",
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.green,
-                    ),
-                  ),
-                  const SizedBox(height: 16),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        // Handle booking action
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(
-                              "Booked ${worker['name']}",
-                              style: const TextStyle(fontSize: 16),
+                  const SizedBox(width: 16), // Space between columns
+
+                  // Right Column
+                  Expanded(
+                    flex: 1, // Adjust the space taken by the right column
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            const Icon(Icons.star, color: Colors.amber),
+                            const SizedBox(width: 4),
+                            Text(
+                              "${worker['rating']}",
+                              style: const TextStyle(fontSize: 16, color: Color.fromRGBO(251, 116, 75, 1)),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 22),
+                        Text(
+                          "Rs. ${worker['price']}+",
+                          style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: const Color.fromRGBO(249, 249, 249, 1),
+                            minimumSize: const Size(double.infinity, 50),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                              side: const BorderSide( // Border color and width
+                                color: Color.fromRGBO(225, 225, 225, 1), // Set border color to red
+                                width: 2, // Set border width
+                              ),
                             ),
                           ),
-                        );
-                      },
-                      child: const Text('Book Worker'),
+                          onPressed: () {
+                            // Handle booking action
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  "Booked ${worker['name']}",
+                                  style: const TextStyle(fontSize: 16),
+                                ),
+                              ),
+                            );
+                          },
+                          child: const Text(
+                            'Order',
+                            style: TextStyle(color: Color.fromRGBO(89, 89, 89, 1)),
+                          ),
+                        ),
+
+                      ],
                     ),
                   ),
                 ],
               ),
             ),
           );
+
         },
       ),
       bottomNavigationBar: BottomNavigationBar(
