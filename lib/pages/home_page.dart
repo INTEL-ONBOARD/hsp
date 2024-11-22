@@ -138,7 +138,7 @@ class MarketPlacePage extends StatelessWidget {
             const SizedBox(height: 10),
             Text(
               title,
-              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.normal, color: Color.fromRGBO(94, 105, 207, 1)), //rgba(94, 105, 207, 1)
             ),
           ],
         ),
