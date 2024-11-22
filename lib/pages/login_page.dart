@@ -55,7 +55,7 @@ class _LoginPageState extends State<LoginPage> {
                     decoration: InputDecoration(
                       prefixIcon: const Icon(Icons.email),
                       labelText: 'Email',
-                      labelStyle: TextStyle(
+                      labelStyle: const TextStyle(
                         color: Color.fromRGBO(132, 132, 132, 1), // Change the label text color to red
                       ),
                       border: OutlineInputBorder(
@@ -86,9 +86,9 @@ class _LoginPageState extends State<LoginPage> {
                     controller: passwordController,
                     obscureText: true,
                     decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.lock),
+                      prefixIcon: const Icon(Icons.lock),
                       labelText: 'Password',
-                      labelStyle: TextStyle(
+                      labelStyle: const TextStyle(
                         color: Color.fromRGBO(132, 132, 132, 1), // Change the label text color to red
                       ),
                       border: OutlineInputBorder(
@@ -116,7 +116,7 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(height: 20),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Color.fromRGBO(94, 105, 207, 1.0),
+                      backgroundColor: const Color.fromRGBO(94, 105, 207, 1.0),
                       minimumSize: const Size(double.infinity, 50),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),

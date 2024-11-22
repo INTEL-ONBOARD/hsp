@@ -11,11 +11,11 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: AppRoutes.intro, // Starting route
       onGenerateRoute: AppRoutes.generateRoute, // Generate routes dynamically

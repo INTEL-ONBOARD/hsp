@@ -55,9 +55,9 @@ class _RegisterPageState extends State<RegisterPage> {
                   TextField(
                     controller: emailController,
                     decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.email),
+                      prefixIcon: const Icon(Icons.email),
                       labelText: 'Email',
-                      labelStyle: TextStyle(
+                      labelStyle: const TextStyle(
                         color: Color.fromRGBO(132, 132, 132, 1), // Change the label text color to red
                       ),
                       border: OutlineInputBorder(
@@ -86,9 +86,9 @@ class _RegisterPageState extends State<RegisterPage> {
                     controller: passwordController,
                     obscureText: true,
                     decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.lock),
+                      prefixIcon: const Icon(Icons.lock),
                       labelText: 'Password',
-                      labelStyle: TextStyle(
+                      labelStyle: const TextStyle(
                         color: Color.fromRGBO(132, 132, 132, 1), // Change the label text color to red
                       ),
                       border: OutlineInputBorder(
@@ -117,9 +117,9 @@ class _RegisterPageState extends State<RegisterPage> {
                     controller: confirmPasswordController,
                     obscureText: true,
                     decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.lock),
+                      prefixIcon: const Icon(Icons.lock),
                       labelText: 'Repeat Password',
-                      labelStyle: TextStyle(
+                      labelStyle: const TextStyle(
                         color: Color.fromRGBO(132, 132, 132, 1), // Change the label text color to red
                       ),
                       border: OutlineInputBorder(
@@ -146,8 +146,8 @@ class _RegisterPageState extends State<RegisterPage> {
                   const SizedBox(height: 16),
                   DropdownButtonFormField<String>(
                     decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.account_circle),
-                      labelStyle: TextStyle(
+                      prefixIcon: const Icon(Icons.account_circle),
+                      labelStyle: const TextStyle(
                         color: Color.fromRGBO(132, 132, 132, 1), // Change the label text color to red
                       ),
                       border: OutlineInputBorder(
@@ -195,7 +195,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   const SizedBox(height: 20),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Color.fromRGBO(94, 105, 207, 1.0),
+                      backgroundColor: const Color.fromRGBO(94, 105, 207, 1.0),
                       minimumSize: const Size(double.infinity, 50),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),

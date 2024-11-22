@@ -5,7 +5,7 @@ import 'painting.page.dart';
 import 'plumbing_page.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -54,7 +54,7 @@ class _HomePageState extends State<HomePage> {
 }
 
 class MarketPlacePage extends StatelessWidget {
-  const MarketPlacePage({Key? key}) : super(key: key);
+  const MarketPlacePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -130,7 +130,7 @@ class MarketPlacePage extends StatelessWidget {
 }
 
 class BookingPage extends StatelessWidget {
-  const BookingPage({Key? key}) : super(key: key);
+  const BookingPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -144,7 +144,7 @@ class BookingPage extends StatelessWidget {
 }
 
 class SettingsPage extends StatelessWidget {
-  const SettingsPage({Key? key}) : super(key: key);
+  const SettingsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
