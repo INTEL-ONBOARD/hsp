@@ -24,14 +24,28 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-          title: Row(
+
+        toolbarHeight: 100, // Set a custom height for the AppBar
+        //shape: Border.fromBorderSide(side), create a border in bottom and change border color to black
+        title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text('Market Place'),
+              const Text('Market Place', style: TextStyle(fontWeight: FontWeight.normal, fontSize: 22,),),
               Image.asset('lib/assets/notification-bell.png', width: 24, height: 24,),
             ]
+        ),
+        // Add a Divider at the bottom of the AppBar for a grey horizontal line
+        bottom: const PreferredSize(
+          preferredSize: const Size.fromHeight(1.0), // Height of the Divider
+          child: Divider(
+            color: Colors.grey, // Set the color to grey
+            thickness: 1, // Set the thickness of the line
           ),
+        ),
       ),
+
+
+
       body: _pages[_currentIndex],
       bottomNavigationBar: Theme(
         data: Theme.of(context).copyWith(
