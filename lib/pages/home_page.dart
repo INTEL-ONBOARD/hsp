@@ -274,7 +274,7 @@ class _SettingsPageState extends State<SettingsPage> {
         mainAxisAlignment: MainAxisAlignment.start,
           children: [
           // This SizedBox adds space at the top to move the content upwards
-          SizedBox(height: 20),
+          SizedBox(height: 0),
 
         Card(
           color: Color(0xF9F9F9), // Set the background color to #F2F2F2
