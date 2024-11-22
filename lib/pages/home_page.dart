@@ -269,9 +269,14 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(20.0), // Padding around the whole content
-      child: Center(
-        child: Card(
+      padding: const EdgeInsets.all(10.0), // Padding around the whole content
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+          // This SizedBox adds space at the top to move the content upwards
+          SizedBox(height: 20),
+
+        Card(
           color: Color(0xF9F9F9), // Set the background color to #F2F2F2
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
@@ -484,6 +489,7 @@ class _SettingsPageState extends State<SettingsPage> {
             ),
           ),
         ),
+    ],
       ),
     );
   }
