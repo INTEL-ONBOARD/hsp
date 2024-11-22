@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../widgets/page_title.dart';
-import 'user_page.dart';
-import 'settings_page.dart';
-import '../widgets/custom_navigation_bar.dart';
+import 'airconditions_page.dart';
+import 'home_cleaning-page.dart';
+import 'painting.page.dart';
+import 'plumbing_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -14,66 +14,34 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
 
-  final PageController _pageController = PageController();
-
   final List<Widget> _pages = [
-    const Center(child: Text('Home Page', style: TextStyle(fontSize: 24))),
-    UserPage(),
-    SettingsPage(),
-  ];
-
-  final List<String> _titles = [
-    'Home',
-    'User',
-    'Settings',
+    const MarketPlacePage(),
+    const BookingPage(),
+    const SettingsPage(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: PageTitle(title: _titles[_currentIndex]),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.notifications),
-            onPressed: () {
-              // Placeholder for future functionality
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Notifications clicked!')),
-              );
-            },
-          ),
-        ],
+        title: const Text('Eanz Market Place'),
       ),
-      body: PageView(
-        controller: _pageController,
-        onPageChanged: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-        children: _pages,
-      ),
+      body: _pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: (index) {
           setState(() {
             _currentIndex = index;
-            _pageController.animateToPage(
-              index,
-              duration: const Duration(milliseconds: 300),
-              curve: Curves.easeInOut,
-            );
           });
         },
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
+            icon: Icon(Icons.store),
+            label: 'Market Place',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'User',
+            icon: Icon(Icons.calendar_today),
+            label: 'Booking',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
@@ -83,10 +51,108 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+}
+
+class MarketPlacePage extends StatelessWidget {
+  const MarketPlacePage({Key? key}) : super(key: key);
 
   @override
-  void dispose() {
-    _pageController.dispose();
-    super.dispose();
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        const SizedBox(height: 20),
+        const Text(
+          'Select What You Need',
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        ),
+        const SizedBox(height: 20),
+        Expanded(
+          child: GridView.count(
+            crossAxisCount: 2,
+            padding: const EdgeInsets.all(16),
+            children: [
+              _buildServiceCard(
+                context,
+                'Air Conditioning',
+                Icons.ac_unit,
+                '/airconditions',
+              ),
+              _buildServiceCard(
+                context,
+                'Home Cleaning',
+                Icons.cleaning_services,
+                '/home-cleaning',
+              ),
+              _buildServiceCard(
+                context,
+                'Painting',
+                Icons.format_paint,
+                '/painting',
+              ),
+              _buildServiceCard(
+                context,
+                'Plumbing',
+                Icons.plumbing,
+                '/plumbing',
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildServiceCard(
+      BuildContext context, String title, IconData icon, String route) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(context, route);
+      },
+      child: Card(
+        elevation: 4,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(icon, size: 50),
+            const SizedBox(height: 10),
+            Text(
+              title,
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class BookingPage extends StatelessWidget {
+  const BookingPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const Center(
+      child: Text(
+        'Booking Page',
+        style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+      ),
+    );
+  }
+}
+
+class SettingsPage extends StatelessWidget {
+  const SettingsPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const Center(
+      child: Text(
+        'Settings Page',
+        style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+      ),
+    );
   }
 }
