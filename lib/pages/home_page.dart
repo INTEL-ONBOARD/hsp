@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home Eanz Market Place'),
+        title: const Text('Market Place'),
       ),
       body: _pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
@@ -34,23 +34,36 @@ class _HomePageState extends State<HomePage> {
             _currentIndex = index;
           });
         },
-        items: const [
+        items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.store),
+            icon: Image.asset(
+              'lib/assets/market-place.png', // Dummy image path for "Market Place"
+              width: 24,
+              height: 24,
+            ),
             label: 'Market Place',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_today),
+            icon: Image.asset(
+              'lib/assets/booking.png', // Dummy image path for "Booking"
+              width: 24,
+              height: 24,
+            ),
             label: 'Booking',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
+            icon: Image.asset(
+              'lib/assets/settings.png', // Dummy image path for "Settings"
+              width: 24,
+              height: 24,
+            ),
             label: 'Settings',
           ),
         ],
       ),
     );
   }
+
 }
 
 class MarketPlacePage extends StatelessWidget {
@@ -74,25 +87,25 @@ class MarketPlacePage extends StatelessWidget {
               _buildServiceCard(
                 context,
                 'Air Conditioning',
-                'assets/air-conditioning.png', // Path to the image
+                'lib/assets/air-conditioning.png', // Path to the image
                 '/airconditions',
               ),
               _buildServiceCard(
                 context,
                 'Home Cleaning',
-                'assets/cleaning.png', // Path to the image
+                'lib/assets/cleaning.png', // Path to the image
                 '/home-cleaning',
               ),
               _buildServiceCard(
                 context,
                 'Painting',
-                'assets/painting.png', // Path to the image
+                'lib/assets/painting.png', // Path to the image
                 '/painting',
               ),
               _buildServiceCard(
                 context,
                 'Plumbing',
-                'assets/plumbing.png', // Path to the image
+                'lib/assets/plumbing.png', // Path to the image
                 '/plumbing',
               ),
             ],
@@ -109,7 +122,7 @@ class MarketPlacePage extends StatelessWidget {
         Navigator.pushNamed(context, route);
       },
       child: Card(
-        elevation: 4,
+        elevation: 1,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
         ),
@@ -125,7 +138,7 @@ class MarketPlacePage extends StatelessWidget {
             const SizedBox(height: 10),
             Text(
               title,
-              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
             ),
           ],
         ),
