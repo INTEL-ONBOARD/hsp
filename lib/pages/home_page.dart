@@ -38,7 +38,7 @@ class _HomePageState extends State<HomePage> {
         bottom: const PreferredSize(
           preferredSize: const Size.fromHeight(1.0), // Height of the Divider
           child: Divider(
-            color: Colors.grey, // Set the color to grey
+            color: Color.fromRGBO(233, 233, 233, 1), // Set the color to grey
             thickness: 1, // Set the thickness of the line
           ),
         ),
