@@ -74,25 +74,25 @@ class MarketPlacePage extends StatelessWidget {
               _buildServiceCard(
                 context,
                 'Air Conditioning',
-                Icons.ac_unit,
+                'assets/air-conditioning.png', // Path to the image
                 '/airconditions',
               ),
               _buildServiceCard(
                 context,
                 'Home Cleaning',
-                Icons.cleaning_services,
+                'assets/cleaning.png', // Path to the image
                 '/home-cleaning',
               ),
               _buildServiceCard(
                 context,
                 'Painting',
-                Icons.format_paint,
+                'assets/painting.png', // Path to the image
                 '/painting',
               ),
               _buildServiceCard(
                 context,
                 'Plumbing',
-                Icons.plumbing,
+                'assets/plumbing.png', // Path to the image
                 '/plumbing',
               ),
             ],
@@ -103,7 +103,7 @@ class MarketPlacePage extends StatelessWidget {
   }
 
   Widget _buildServiceCard(
-      BuildContext context, String title, IconData icon, String route) {
+      BuildContext context, String title, String imagePath, String route) {
     return GestureDetector(
       onTap: () {
         Navigator.pushNamed(context, route);
@@ -116,7 +116,12 @@ class MarketPlacePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(icon, size: 50),
+            Image.asset(
+              imagePath, // Use the provided image path
+              width: 50,
+              height: 50,
+              fit: BoxFit.contain,
+            ),
             const SizedBox(height: 10),
             Text(
               title,
@@ -127,6 +132,7 @@ class MarketPlacePage extends StatelessWidget {
       ),
     );
   }
+
 }
 
 class BookingPage extends StatelessWidget {
