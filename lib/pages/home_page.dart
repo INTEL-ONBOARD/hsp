@@ -19,50 +19,81 @@ class _HomePageState extends State<HomePage> {
     const BookingPage(),
     const SettingsPage(),
   ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Market Place'),
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text('Market Place'),
+              Image.asset('lib/assets/notification-bell.png', width: 24, height: 24,),
+            ]
+          ),
       ),
       body: _pages[_currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-        items: [
-          BottomNavigationBarItem(
-            icon: Image.asset(
-              'lib/assets/market-place.png', // Dummy image path for "Market Place"
-              width: 24,
-              height: 24,
-            ),
-            label: 'Market Place',
+      bottomNavigationBar: Theme(
+        data: Theme.of(context).copyWith(
+          bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+            selectedLabelStyle: TextStyle(fontSize: 15, fontWeight: FontWeight.bold,),
+            unselectedLabelStyle: TextStyle(fontSize: 12, fontWeight: FontWeight.bold,),
+            selectedItemColor: Colors.white, // Text color for the selected item
+            unselectedItemColor: Colors.white70, // Text color for unselected items
           ),
-          BottomNavigationBarItem(
-            icon: Image.asset(
-              'lib/assets/booking.png', // Dummy image path for "Booking"
-              width: 24,
-              height: 24,
-            ),
-            label: 'Booking',
+        ),
+        child: SizedBox(
+          height: 100, // Custom height for the BottomNavigationBar
+          child: BottomNavigationBar(
+            currentIndex: _currentIndex,
+            backgroundColor: const Color.fromRGBO(94, 105, 207, 1),
+            onTap: (index) {
+              setState(() {
+                _currentIndex = index;
+              });
+            },
+
+            items: [
+              BottomNavigationBarItem(
+                icon: Padding(
+                  padding: const EdgeInsets.only(bottom: 4.0), // Adds margin between icon and label
+                  child: Image.asset(
+                    'lib/assets/market-place.png',
+                    width: 28,
+                    height: 28,
+                  ),
+                ),
+                label: 'Market Place',
+              ),
+              BottomNavigationBarItem(
+                icon: Padding(
+                  padding: const EdgeInsets.only(bottom: 4.0), // Adds margin between icon and label
+                  child: Image.asset(
+                    'lib/assets/booking.png',
+                    width: 28,
+                    height: 28,
+                  ),
+                ),
+                label: 'Booking',
+              ),
+              BottomNavigationBarItem(
+                icon: Padding(
+                  padding: const EdgeInsets.only(bottom: 4.0), // Adds margin between icon and label
+                  child: Image.asset(
+                    'lib/assets/settings.png',
+                    width: 28,
+                    height: 28,
+                  ),
+                ),
+                label: 'Settings',
+              ),
+            ],
           ),
-          BottomNavigationBarItem(
-            icon: Image.asset(
-              'lib/assets/settings.png', // Dummy image path for "Settings"
-              width: 24,
-              height: 24,
-            ),
-            label: 'Settings',
-          ),
-        ],
+        ),
       ),
     );
   }
+
+
 
 }
 
@@ -74,10 +105,11 @@ class MarketPlacePage extends StatelessWidget {
     return Column(
       children: [
         const SizedBox(height: 20),
+        /*
         const Text(
-          'Select What You Need',
+          'Select What You Needddd',
           style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-        ),
+        ),*/
         const SizedBox(height: 20),
         Expanded(
           child: GridView.count(
@@ -122,9 +154,14 @@ class MarketPlacePage extends StatelessWidget {
         Navigator.pushNamed(context, route);
       },
       child: Card(
-        elevation: 1,
+        //elevation: 3,
+        color: Colors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
+          side: const BorderSide(
+            color: Color.fromRGBO(232, 232, 232, 1),
+            width: 1,
+          ),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -138,8 +175,7 @@ class MarketPlacePage extends StatelessWidget {
             const SizedBox(height: 10),
             Text(
               title,
-              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.normal, color: Color.fromRGBO(94, 105, 207, 1)), //rgba(94, 105, 207, 1)
-            ),
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.normal, color: Color.fromRGBO(94, 105, 207, 1))),
           ],
         ),
       ),
