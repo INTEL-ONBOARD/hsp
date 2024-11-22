@@ -16,19 +16,19 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        centerTitle: false,
-        title: const Text(
-          'HomeEaze',
-          style: TextStyle(
-            fontWeight: FontWeight.normal,
-            fontSize: 18,
-            color: Colors.black,
-          ),
-        ),
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: Colors.white,
+      //   elevation: 0,
+      //   centerTitle: false,
+      //   title: const Text(
+      //     'HomeEaze',
+      //     style: TextStyle(
+      //       fontWeight: FontWeight.normal,
+      //       fontSize: 18,
+      //       color: Colors.black,
+      //     ),
+      //   ),
+      // ),
       body: Stack(
         children: [
           Align(

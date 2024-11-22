@@ -18,19 +18,19 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        centerTitle: false,
-        title: const Text(
-          'HomeEaze',
-          style: TextStyle(
-            fontWeight: FontWeight.normal,
-            fontSize: 18,
-            color: Colors.black,
-          ),
-        ),
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: Colors.white,
+      //   elevation: 0,
+      //   centerTitle: false,
+      //   title: const Text(
+      //     'HomeEaze',
+      //     style: TextStyle(
+      //       fontWeight: FontWeight.normal,
+      //       fontSize: 18,
+      //       color: Colors.black,
+      //     ),
+      //   ),
+      // ),
       body: Stack(
         children: [
           Align(
@@ -181,10 +181,10 @@ class _RegisterPageState extends State<RegisterPage> {
                         value: 'Provider',
                         child: Text('Provider'),
                       ),
-                      DropdownMenuItem(
-                        value: 'Admin',
-                        child: Text('Admin'),
-                      ),
+                      // DropdownMenuItem(
+                      //   value: 'Admin',
+                      //   child: Text('Admin'),
+                      // ),
                     ],
                     onChanged: (value) {
                       setState(() {
