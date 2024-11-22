@@ -15,10 +15,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: AppRoutes.home, // Starting route
       onGenerateRoute: AppRoutes.generateRoute, // Generate routes dynamically
+      theme: ThemeData(
+        scaffoldBackgroundColor: const Color(0xFFEFEFEF), // Set scaffold background color
+        primarySwatch: Colors.blue, // Primary color for the app
+      ),
     );
   }
 }
