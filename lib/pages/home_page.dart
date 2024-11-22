@@ -19,24 +19,51 @@ class _HomePageState extends State<HomePage> {
     const BookingPage(),
     const SettingsPage(),
   ];
+
+  String _getAppBarTitle() {
+    switch (_currentIndex) {
+      case 1:
+        return 'Booking';
+      case 2:
+        return 'Settings';
+      default:
+        return 'Market Place';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-
         toolbarHeight: 100, // Set a custom height for the AppBar
-        //shape: Border.fromBorderSide(side), create a border in bottom and change border color to black
+        automaticallyImplyLeading: false, // Remove the back button
         title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text('Market Place', style: TextStyle(fontWeight: FontWeight.normal, fontSize: 22,),),
-              Image.asset('lib/assets/notification-bell.png', width: 24, height: 24,),
-            ]
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 16.0), // Padding on the left for the text
+              child: Text(
+                _getAppBarTitle(), // Dynamic title based on the current tab
+                style: const TextStyle(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 22,
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 16.0), // Padding on the right for the icon
+              child: Image.asset(
+                'lib/assets/notification-bell.png',
+                width: 24,
+                height: 24,
+              ),
+            ),
+          ],
         ),
         // Add a Divider at the bottom of the AppBar for a grey horizontal line
         bottom: const PreferredSize(
-          preferredSize: const Size.fromHeight(1.0), // Height of the Divider
+          preferredSize: Size.fromHeight(1.0), // Height of the Divider
           child: Divider(
             color: Color.fromRGBO(233, 233, 233, 1), // Set the color to grey
             thickness: 1, // Set the thickness of the line
@@ -44,9 +71,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
 
-
-
-      body: _pages[_currentIndex],
+      body: _pages[_currentIndex], // Display the corresponding page
       bottomNavigationBar: Theme(
         data: Theme.of(context).copyWith(
           bottomNavigationBarTheme: const BottomNavigationBarThemeData(
@@ -63,10 +88,9 @@ class _HomePageState extends State<HomePage> {
             backgroundColor: const Color.fromRGBO(94, 105, 207, 1),
             onTap: (index) {
               setState(() {
-                _currentIndex = index;
+                _currentIndex = index; // Update the index when an item is tapped
               });
             },
-
             items: [
               BottomNavigationBarItem(
                 icon: Padding(
@@ -107,9 +131,6 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-
-
-
 }
 
 class MarketPlacePage extends StatelessWidget {
@@ -118,14 +139,8 @@ class MarketPlacePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-
       children: [
         const SizedBox(height: 20),
-        /*
-        const Text(
-          'Select What You Needddd',
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-        ),*/
         const SizedBox(height: 20),
         Expanded(
           child: GridView.count(
@@ -163,14 +178,12 @@ class MarketPlacePage extends StatelessWidget {
     );
   }
 
-  Widget _buildServiceCard(
-      BuildContext context, String title, String imagePath, String route) {
+  Widget _buildServiceCard(BuildContext context, String title, String imagePath, String route) {
     return GestureDetector(
       onTap: () {
         Navigator.pushNamed(context, route);
       },
       child: Card(
-        //elevation: 3,
         color: Colors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
@@ -191,13 +204,17 @@ class MarketPlacePage extends StatelessWidget {
             const SizedBox(height: 10),
             Text(
               title,
-              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.normal, color: Color.fromRGBO(94, 105, 207, 1))),
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.normal,
+                color: Color.fromRGBO(94, 105, 207, 1),
+              ),
+            ),
           ],
         ),
       ),
     );
   }
-
 }
 
 class BookingPage extends StatelessWidget {
