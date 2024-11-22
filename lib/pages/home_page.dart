@@ -233,15 +233,257 @@ class BookingPage extends StatelessWidget {
   }
 }
 
-class SettingsPage extends StatelessWidget {
+
+
+class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
 
   @override
+  _SettingsPageState createState() => _SettingsPageState();
+}
+
+class _SettingsPageState extends State<SettingsPage> {
+  // Controller for email input
+  final TextEditingController _emailController = TextEditingController();
+
+  // Focus node for email field
+  final FocusNode _emailFocusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Adding focus listener to handle placeholder disappearing
+    _emailFocusNode.addListener(() {
+      setState(() {}); // Rebuild UI when focus changes
+    });
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _emailFocusNode.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text(
-        'Settings Page',
-        style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+    return Padding(
+      padding: const EdgeInsets.all(20.0), // Padding around the whole content
+      child: Center(
+        child: Card(
+          color: Color(0xF9F9F9), // Set the background color to #F2F2F2
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          elevation: 0, // No shadow
+          child: Padding(
+            padding: const EdgeInsets.all(19.0), // Padding inside the card
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Title
+                const Text(
+                  'Edit personal details',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 20),
+
+                // Email field
+                const Text(
+                  'Your Email',
+                  style: TextStyle(fontSize: 14),
+                ),
+                const SizedBox(height: 8),
+                TextField(
+                  controller: _emailController,
+                  focusNode: _emailFocusNode,
+                  decoration: InputDecoration(
+                    hintText: _emailFocusNode.hasFocus ? '' : 'test@gmail.com',
+                    filled: true,
+                    fillColor: Colors.grey[200],
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide.none,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 16),
+
+                // Password field
+                const Text(
+                  'Password',
+                  style: TextStyle(fontSize: 14),
+                ),
+                const SizedBox(height: 8),
+                Row(
+                  children: [
+                    Expanded(
+                      child: TextField(
+                        obscureText: true,
+                        decoration: InputDecoration(
+                          hintText: '*******',
+                          filled: true,
+                          fillColor: Colors.grey[200],
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: BorderSide.none,
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    Container(
+                      height: 50,
+                      width: 50,
+                      decoration: BoxDecoration(
+                        color: Color.fromRGBO(125, 105, 239, 1),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: IconButton(
+                        icon: const Icon(Icons.refresh, color: Colors.white),
+                        onPressed: () {
+                          // Add action for password reset
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 16),
+
+                // Location dropdown field
+                const Text(
+                  'Location',
+                  style: TextStyle(fontSize: 14),
+                ),
+                const SizedBox(height: 8),
+                DropdownButtonFormField<String>(
+                  value: 'Minuwangoda',
+                  items: <String>['Minuwangoda', 'Colombo', 'Kandy', 'Galle']
+                      .map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.grey[200],
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide.none,
+                    ),
+                  ),
+                  onChanged: (String? newValue) {
+                    // Handle location change
+                  },
+                ),
+                const SizedBox(height: 16),
+
+                // Mobile Number field
+                const Text(
+                  'Mobile Number',
+                  style: TextStyle(fontSize: 14),
+                ),
+                const SizedBox(height: 8),
+                TextField(
+                  keyboardType: TextInputType.phone,
+                  decoration: InputDecoration(
+                    hintText: '+9478 2345 234',
+                    filled: true,
+                    fillColor: Colors.grey[200],
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide.none,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 20),
+
+                // Update Button
+                SizedBox(
+                  width: double.infinity,
+                  height: 50,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color.fromRGBO(125, 105, 239, 1), // Purple
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      foregroundColor: Colors.white, // Set text color to white
+                    ),
+                    onPressed: () {
+                      // Add action for updating details
+                    },
+                    child: const Text(
+                      'Update',
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ),
+                ),
+
+                const SizedBox(height: 10),
+
+                // Dashboard and Log out buttons
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    SizedBox(
+                      width: 170, // Set your desired width for the Dashboard button
+                      child: OutlinedButton(
+                        onPressed: () {
+                          // Navigate to Dashboard
+                        },
+                        style: OutlinedButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(horizontal: 30),
+                          side: const BorderSide(
+                            color: Color.fromRGBO(125, 105, 239, 1), // Border color
+                            width: 2, // Border width
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          backgroundColor: Colors.transparent, // Transparent background
+                        ),
+                        child: const Text(
+                          'Dashboard',
+                          style: TextStyle(
+                            color: Color.fromRGBO(125, 105, 239, 1), // Text color matching the border
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 150, // Set your desired width for the Log out button
+                      child: ElevatedButton(
+                        onPressed: () {
+                          // Log out action
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color.fromRGBO(56, 58, 87, 1), // Darker color (like in your image)
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          padding: const EdgeInsets.symmetric(horizontal: 30),
+                        ),
+                        child: const Text(
+                          'Log out',
+                          style: TextStyle(
+                            color: Colors.white, // White text color for the "Log out" button
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
