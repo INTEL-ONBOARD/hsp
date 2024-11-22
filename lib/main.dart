@@ -20,8 +20,13 @@ class MyApp extends StatelessWidget {
       initialRoute: AppRoutes.home, // Starting route
       onGenerateRoute: AppRoutes.generateRoute, // Generate routes dynamically
       theme: ThemeData(
-        scaffoldBackgroundColor: const Color(0xFFEFEFEF), // Set scaffold background color
-        primarySwatch: Colors.blue, // Primary color for the app
+        scaffoldBackgroundColor: const Color(0xFFEFEFEF), // Light grey scaffold background
+        primaryColor: Colors.white, // Set primary color to white
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.white, // Ensure AppBar also uses white color
+          titleTextStyle: TextStyle(color: Colors.black), // Black text for the AppBar title
+          iconTheme: IconThemeData(color: Colors.black), // Black color for icons in AppBar
+        ),
       ),
     );
   }
