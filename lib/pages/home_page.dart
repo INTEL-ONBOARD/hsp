@@ -140,12 +140,14 @@ class MarketPlacePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(height: 20),
-        const SizedBox(height: 20),
+        // const SizedBox(height: 20),
+        // const SizedBox(height: 20),
         Expanded(
           child: GridView.count(
             crossAxisCount: 2,
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.all(26),
+            crossAxisSpacing: 8, // Space between columns
+            mainAxisSpacing: 8,
             children: [
               _buildServiceCard(
                 context,
@@ -186,7 +188,7 @@ class MarketPlacePage extends StatelessWidget {
       child: Card(
         color: Colors.white,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(10),
           side: const BorderSide(
             color: Color.fromRGBO(232, 232, 232, 1),
             width: 1,
