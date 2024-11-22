@@ -13,18 +13,21 @@ class _AirConditionsHomePageState extends State<AirConditionsHomePage> {
   final List<Map<String, dynamic>> workers = const [
     {
       "name": "John Doe",
+      "city": "Minuangoda",
       "rating": 4.5,
       "description": "Experienced AC technician with 5+ years of experience.",
       "price": "\$50/hr",
     },
     {
       "name": "Jane Smith",
+      "city": "Minuangoda",
       "rating": 4.8,
       "description": "Specialist in quick repairs and installations.",
       "price": "\$55/hr",
     },
     {
       "name": "Robert Brown",
+      "city": "Minuangoda",
       "rating": 4.6,
       "description": "Affordable and reliable AC repair services.",
       "price": "\$45/hr",
@@ -41,6 +44,7 @@ class _AirConditionsHomePageState extends State<AirConditionsHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text("Air Conditioning Services"),
       ),
@@ -49,6 +53,7 @@ class _AirConditionsHomePageState extends State<AirConditionsHomePage> {
         itemBuilder: (context, index) {
           final worker = workers[index];
           return Card(
+            color: const Color.fromRGBO(249, 249, 249, 1), //242, 242, 242, 1 for border
             margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: Padding(
               padding: const EdgeInsets.all(16.0),
