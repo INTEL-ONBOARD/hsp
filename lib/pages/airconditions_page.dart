@@ -47,7 +47,7 @@ class _AirConditionsHomePageState extends State<AirConditionsHomePage> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         toolbarHeight: 120, // Set a custom height for the AppBar
-        automaticallyImplyLeading: false, // Remove the back button
+        automaticallyImplyLeading: true, // back button visibility
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
