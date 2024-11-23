@@ -46,70 +46,93 @@ class PaintingPage extends StatelessWidget {
         ),
       ),
 
-      body: const SuccessScreen(
-        title: "Titleeee",
-        imagePath: "lib/assets/success-tick.png",
-        message: "all changes saved",
-      ), // Replace this with the SuccessScreen widget
+      body: const ScheduleDateConfirmation(),
     );
   }
 }
 
-class SuccessScreen extends StatelessWidget {
-  final String imagePath;
-  final String title;
-  final String message;
-
-  const SuccessScreen({
-    super.key,
-    required this.title,
-    required this.imagePath,
-    required this.message,
-  });
-
+class ScheduleDateConfirmation extends StatelessWidget {
+  const ScheduleDateConfirmation({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
-        padding: const EdgeInsets.all(26), // Add padding here
+        padding: const EdgeInsets.all(30),
         child: Container(
           decoration: BoxDecoration(
-            color: const Color.fromRGBO(249, 249, 249, 1), // Background color
+            color: const Color.fromRGBO(249, 249, 249, 1),
             border: Border.all(
-              color: Color.fromRGBO(249, 249, 249, 1), // Border color
+              color: const Color.fromRGBO(249, 249, 249, 1),
               width: 2, // Border width
             ),
-            borderRadius: BorderRadius.circular(16), // Rounded corners
+            borderRadius: BorderRadius.circular(16),
           ),
           child: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  //image file path
-                  Image.asset(imagePath, width: 100, height: 100,),
 
-                  Text(
-                    title,
-                    style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Colors.black),),
+
+
+                  const Text(
+                    "Confirm schedule Date?",
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400, color: Colors.black),),
                   //const SizedBox(height: 24,),
-                  Text(
-                    message,
-                    style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: Colors.black),
+                  // Date dropdown?
+
+                  const SizedBox(height: 8, width: 10,),
+                  DropdownButtonFormField<String>(
+                    value: 'Minuwangoda',
+                    items: <String>['Minuwangoda', 'Colombo', 'Kandy', 'Galle']
+                        .map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Colors.grey[200],
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: BorderSide.none,
+                      ),
+                    ),
+                    onChanged: (String? newValue) {
+                      // Handle location change
+                    },
                   ),
-                  const SizedBox(height: 14,),
+
+
+                  const SizedBox(height: 12,),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      foregroundColor: const Color.fromRGBO(94, 105, 207, 1),
-                      backgroundColor: Colors.white,
+                      foregroundColor: Colors.white,
+                      backgroundColor: const Color.fromRGBO(94, 105, 207, 1),
                       side: const BorderSide(color: Color.fromRGBO(94, 105, 207, 1), width: 1),
-                      minimumSize: const Size(160, 45), // Button size
+                      minimumSize: const Size(280, 45), // Button size
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8),),
                     ),
                     onPressed: () {
                       // Handle "Done" button action
                     },
-                    child: const Text('Done', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400,),
+                    child: const Text('Place Order', style: TextStyle(fontSize: 18, fontWeight: FontWeight.normal,),
+                    ),
+                  ),
+                  const SizedBox(height: 12,),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Color.fromRGBO(94, 105, 207, 1),
+                      backgroundColor: Colors.white,
+                      side: const BorderSide(color: Color.fromRGBO(94, 105, 207, 1), width: 1),
+                      minimumSize: const Size(280, 45), // Button size
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8),),
+                    ),
+                    onPressed: () {
+                      // Handle "Done" button action
+                    },
+                    child: const Text('Go Back', style: TextStyle(fontSize: 18, fontWeight: FontWeight.normal,),
                     ),
                   ),
                 ],
