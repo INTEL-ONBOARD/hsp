@@ -36,7 +36,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        toolbarHeight: 100, // Set a custom height for the AppBar
+        toolbarHeight: 120, // Set a custom height for the AppBar
         automaticallyImplyLeading: false, // Remove the back button
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
