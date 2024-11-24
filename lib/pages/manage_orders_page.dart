@@ -3,23 +3,53 @@ import 'package:flutter/material.dart';
 class ManageOrdersPage extends StatelessWidget {
   const ManageOrdersPage({super.key});
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text('Manage Orders'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.notifications),
-            onPressed: () {
-              // Handle notification button press
-              print('Notification button pressed');
-            },
+        toolbarHeight: 120, // Set a custom height for the AppBar
+        automaticallyImplyLeading: true, // back button visibility
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Padding(
+              padding: const EdgeInsets.only(
+                  left: 16.0), // Padding on the left for the text
+              child: Text(
+                "Manage Orders", // Dynamic title based on the current tab
+                style: const TextStyle(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 22,
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(
+                  right: 16.0), // Padding on the right for the icon
+              child: Image.asset(
+                'lib/assets/notification-bell.png',
+                width: 24,
+                height: 24,
+              ),
+            ),
+          ],
+        ),
+
+        bottom: const PreferredSize(
+          //divider
+          preferredSize: Size.fromHeight(1.0),
+          child: Divider(
+            color: Color.fromRGBO(233, 233, 233, 1),
+            thickness: 1,
           ),
-        ],
+        ),
       ),
+
+
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(40.0),
         child: ListView.builder(
           itemCount: 5, // Example: 5 orders (replace with dynamic count if needed)
           itemBuilder: (context, index) {
@@ -62,46 +92,201 @@ class ManageOrdersPage extends StatelessWidget {
 
   Widget _buildOrderCard() {
     return Card(
-      elevation: 4.0,
+      elevation: 0.0,
+      color: Color.fromRGBO(249, 249, 249, 1),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
+        side: const BorderSide(
+          color: Color.fromRGBO(242, 242, 242, 1),
+          width: 1,
+        ),
       ),
       margin: const EdgeInsets.only(bottom: 16.0),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
+        //First row
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              'Order ID: #12345',
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
+            // First Row
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Left Column
+                Expanded(
+                  flex: 2,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Order ID: #12345',
+                        style: const TextStyle(
+                          color: Color.fromRGBO(138, 138, 138, 1),
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(height: 2),
+                      Text(
+                        'Rs.4870.00',
+                        style: const TextStyle(
+                          fontSize: 28,
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                      Text(
+                        'Mr.Kamal',
+                        style: const TextStyle(
+                          color: Color.fromRGBO(97, 97, 97, 1),
+                          fontSize: 23,
+                          fontWeight: FontWeight.normal,
+                        ),
+                      ),
+                      Text(
+                        'Borella',
+                        style: const TextStyle(
+                          color: Color.fromRGBO(156, 156, 156, 1),
+                          fontSize: 13,
+                          fontWeight: FontWeight.normal,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                // Right Column
+                Expanded(
+                  flex: 1,
+                  child: Container(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end, // Aligns text to the right
+                      mainAxisSize: MainAxisSize.min, // Adjusts the column height to its content
+                      children: [
+                        Text(
+                          'Order Date',
+                          style: const TextStyle(
+                            color: Color.fromRGBO(138, 138, 138, 1),
+                            fontSize: 13,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+
+                        Text(
+                          '2024-11-12',
+                          style: const TextStyle(
+                            fontSize: 13,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+
+              ],
+            ),
+
+            //divider
+            PreferredSize(
+              //divider
+              preferredSize: Size.fromHeight(1.0),
+              child: Divider(
+                color: Color.fromRGBO(221, 221, 221, 1),
+                thickness: 1,
               ),
             ),
-            const SizedBox(height: 8),
-            Text('Order Date: 2024-11-24'),
-            const SizedBox(height: 8),
-            Text('Price: \$150'),
-            const SizedBox(height: 8),
-            Text('Booked By: John Doe'),
-            const SizedBox(height: 8),
-            Text('Location: New York City'),
-            const SizedBox(height: 8),
-            Text('Service Name: Air Conditioning Service'),
-            const SizedBox(height: 16),
-            Align(
-              alignment: Alignment.centerRight,
-              child: ElevatedButton(
-                onPressed: () {
-                  // Handle order completion logic
-                  print('Order marked as completed');
-                },
-                child: const Text('Completed'),
+
+            // Third Row
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  flex: 3,
+                  child: Text(
+                    'Air Conditioning',
+                    style: const TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w600,
+                      color: Color.fromRGBO(94, 105, 207, 1)
+                    ),
+                  ),
+                ),
+
+
+                Expanded(
+                  flex: 3,
+                  child: Align(
+                    alignment: Alignment.topRight, // Aligns the Row to the right
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center, // Aligns text vertically
+                      mainAxisSize: MainAxisSize.min, // Ensures the Row takes only the necessary space
+                      children: [
+                        Text('for'),
+                        const SizedBox(width: 4), // Optional spacing between texts
+                        Text(
+                          '2024-12-24',
+                          style: const TextStyle(
+                            color: Color.fromRGBO(94, 105, 207, 1),
+                            fontSize: 13,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+
+            const SizedBox(height: 16), // Spacing between rows
+
+            // Completed Button
+            /*Center(
+            child: ElevatedButton(
+              onPressed: () {
+                // Handle order completion logic
+                print('Order marked as completed');
+              },
+              child: const Text('Completed'),
+            ),
+            ),*/
+
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.white,
+                minimumSize: const Size(double.infinity, 50),
+                shape: RoundedRectangleBorder(
+                  side: const BorderSide(
+                    color: Color.fromRGBO(94, 105, 207, 1),
+                    width: 1,
+                  ),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+              ),
+              onPressed: () /*async*/ {
+                // Here, you can add your button logic
+                print('Order marked as completed');
+                /*Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const HomePage()),
+                );*/
+              },
+              child: const Text(
+                'Completed',
+                style: TextStyle(
+                  color: Color.fromRGBO(94, 105, 207, 1), // Set the text color to white
+                  fontWeight: FontWeight.normal, // Optional: make text bold
+                ),
               ),
             ),
           ],
         ),
+
+
+
+
+
       ),
     );
   }
