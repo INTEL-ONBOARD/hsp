@@ -8,6 +8,7 @@ import 'pages/home_cleaning-page.dart'; // Corrected import name
 import 'pages/painting.page.dart'; // Corrected import name
 import 'pages/plumbing_page.dart'; // Corrected import name
 import 'pages/settings_ok_page.dart'; // Corrected import name
+import 'pages/settings_fail_page.dart';
 import 'pages/manage_orders_page.dart'; // Added
 import 'pages/view_services_page.dart'; // Added
 import 'pages/manage_services_page.dart'; // Added
@@ -24,6 +25,7 @@ class AppRoutes {
   static const String painting = '/painting';
   static const String plumbing = '/plumbing';
   static const String settingsOk = '/settings-ok';
+  static const String settingsFailed = '/settings-failed'; //added later
 
   // New routes
   static const String manageOrders = '/manage-orders';
@@ -52,6 +54,8 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const PlumbingPage());
       case settingsOk:
         return MaterialPageRoute(builder: (_) => const SettingsOkPage());
+      case settingsFailed:
+        return MaterialPageRoute(builder: (_) => const SettingsFailedPage());
 
       // New cases
       case manageOrders:
