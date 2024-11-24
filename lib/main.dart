@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.painting, // Starting route
+      initialRoute: AppRoutes.home, // Starting route
       onGenerateRoute: AppRoutes.generateRoute, // Generate routes dynamically
       theme: ThemeData(
         scaffoldBackgroundColor: const Color(0xFFEFEFEF), // Light grey scaffold background

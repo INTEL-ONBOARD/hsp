@@ -8,7 +8,7 @@ class AirConditionsHomePage extends StatefulWidget {
 }
 
 class _AirConditionsHomePageState extends State<AirConditionsHomePage> {
-  int _currentIndex = 0; // For managing the bottom navigation
+  final int _currentIndex = 0; // For managing the bottom navigation
 
   final List<Map<String, dynamic>> workers = const [
     {
@@ -47,15 +47,15 @@ class _AirConditionsHomePageState extends State<AirConditionsHomePage> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         toolbarHeight: 120, // Set a custom height for the AppBar
-        automaticallyImplyLeading: true, // back button visibility
+        automaticallyImplyLeading: false, // Remove the back button
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const Padding(
-              padding: const EdgeInsets.only(left: 16.0), // Padding on the left for the text
+              padding: EdgeInsets.only(left: 16.0), // Padding on the left for the text
               child: Text(
                 "Air Conditioning", // Dynamic title based on the current tab
-                style: const TextStyle(
+                style: TextStyle(
                   fontWeight: FontWeight.normal,
                   fontSize: 22,
                 ),
