@@ -47,22 +47,24 @@ class _AirConditionsHomePageState extends State<AirConditionsHomePage> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         toolbarHeight: 120, // Set a custom height for the AppBar
-        automaticallyImplyLeading: false, // Remove the back button
+        automaticallyImplyLeading: true, // back button visibility
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const Padding(
-              padding: EdgeInsets.only(left: 16.0), // Padding on the left for the text
+              padding: const EdgeInsets.only(
+                  left: 16.0), // Padding on the left for the text
               child: Text(
-                "Air Conditioning", // Dynamic title based on the current tab
-                style: TextStyle(
+                "Painting", // Dynamic title based on the current tab
+                style: const TextStyle(
                   fontWeight: FontWeight.normal,
                   fontSize: 22,
                 ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(right: 16.0), // Padding on the right for the icon
+              padding: const EdgeInsets.only(
+                  right: 16.0), // Padding on the right for the icon
               child: Image.asset(
                 'lib/assets/notification-bell.png',
                 width: 24,
@@ -71,12 +73,13 @@ class _AirConditionsHomePageState extends State<AirConditionsHomePage> {
             ),
           ],
         ),
-        // Add a Divider at the bottom of the AppBar for a grey horizontal line
+
         bottom: const PreferredSize(
-          preferredSize: Size.fromHeight(1.0), // Height of the Divider
+          //divider
+          preferredSize: Size.fromHeight(1.0),
           child: Divider(
-            color: Color.fromRGBO(233, 233, 233, 1), // Set the color to grey
-            thickness: 1, // Set the thickness of the line
+            color: Color.fromRGBO(233, 233, 233, 1),
+            thickness: 1,
           ),
         ),
       ),
