@@ -176,35 +176,35 @@ class _SettingsPageState extends State<SettingsPage> {
     );
   }
 }
-
-class SettingsOkPage extends StatelessWidget {
-  const SettingsOkPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Settings Saved'),
-        backgroundColor: const Color.fromRGBO(94, 105, 207, 1),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              'Your changes have been saved!',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: const Text('Back to Settings'),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
+//
+// class SettingsOkPage extends StatelessWidget {
+//   const SettingsOkPage({super.key});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: const Text('Settings Saved'),
+//         backgroundColor: const Color.fromRGBO(94, 105, 207, 1),
+//       ),
+//       body: Center(
+//         child: Column(
+//           mainAxisAlignment: MainAxisAlignment.center,
+//           children: [
+//             const Text(
+//               'Your changes have been saved!',
+//               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+//             ),
+//             const SizedBox(height: 20),
+//             ElevatedButton(
+//               onPressed: () {
+//                 Navigator.pop(context);
+//               },
+//               child: const Text('Back to Settings'),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
