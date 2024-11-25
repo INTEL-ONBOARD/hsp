@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 
 class ManageServicesPage extends StatefulWidget {
@@ -34,7 +35,7 @@ class _ManageServicesPageState extends State<ManageServicesPage> {
               padding: const EdgeInsets.only(
                   left: 16.0), // Padding on the left for the text
               child: Text(
-                "View Services", // Dynamic title based on the current tab
+                "Manage Services", // Dynamic title based on the current tab
                 style: const TextStyle(
                   fontWeight: FontWeight.normal,
                   fontSize: 22,
@@ -82,22 +83,40 @@ class _ManageServicesPageState extends State<ManageServicesPage> {
               const Text(
                 'Add a Service',
                 style: TextStyle(
-                  fontSize: 30,
+                  fontSize: 28,
                   fontWeight: FontWeight.w500,
                 ),
               ),
               const SizedBox(height: 16),
               // Description Field
+              const Text(
+                'Description',
+                style: TextStyle(fontSize: 14),
+              ),
+              const SizedBox(height: 8),
               TextField(
-                controller: _descriptionController,
-                maxLines: 4,
-                decoration: const InputDecoration(
-                  labelText: 'Description',
-                  border: OutlineInputBorder(),
+                //controller: _emailController,
+                //focusNode: _emailFocusNode,
+                maxLines: 6,
+                decoration: InputDecoration(
+                  hintText: 'Service description here',
+                  hintStyle: const TextStyle(
+                    color: Colors.grey,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                    fontStyle: FontStyle.italic,
+                  ),
+                  filled: true,
+                  fillColor: Colors.grey[200],
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide.none,
+                  ),
                 ),
               ),
+
+              /*
               const SizedBox(height: 16),
-              // Price Field with "Return 0" Button
               Row(
                 children: [
                   Expanded(
@@ -124,42 +143,90 @@ class _ManageServicesPageState extends State<ManageServicesPage> {
                   ),
                 ],
               ),
-              const SizedBox(height: 16),
-              // Location Dropdown
-              DropdownButtonFormField<String>(
-                value: _selectedLocation,
-                items: const [
-                  DropdownMenuItem(
-                    value: 'Rathnapura',
-                    child: Text('Rathnapura'),
+              */
+              const SizedBox(height: 12),
+              const Text(
+                'Price',
+                style: TextStyle(fontSize: 14),
+              ),
+              const SizedBox(height: 8),
+              Row(
+                children: [
+                  Expanded(
+                    child: TextField(
+                      keyboardType: const TextInputType.numberWithOptions(decimal: true), // Numeric keyboard with decimal point
+                      inputFormatters: [
+                        FilteringTextInputFormatter.allow(RegExp(r'^\d*\.?\d*')), // Allow only numbers and decimals. hmm isn't one of these enough?
+                      ],
+                      decoration: InputDecoration(
+                        hintText: '0.00', // Placeholder text
+                        hintStyle: const TextStyle(
+                          color: Colors.grey,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w400,
+                        ),
+                        filled: true,
+                        fillColor: Colors.grey[200],
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide.none,
+                        ),
+                      ),
+                    ),
+
                   ),
-                  DropdownMenuItem(
-                    value: 'Minuwangoda',
-                    child: Text('Minuwangoda'),
-                  ),
-                  DropdownMenuItem(
-                    value: 'Gampaha',
-                    child: Text('Gampaha'),
-                  ),
-                  DropdownMenuItem(
-                    value: 'Kandy',
-                    child: Text('Kandy'),
-                  ),
-                  DropdownMenuItem(
-                    value: 'Galle',
-                    child: Text('Galle'),
+                  const SizedBox(width: 10),
+                  Container(
+                    height: 50,
+                    width: 50,
+                    decoration: BoxDecoration(
+                      color: Color.fromRGBO(152, 160, 228, 1), //not sure current color scheme for disabled button, if so, here is for the active one: 94, 105, 207, 1
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: IconButton(
+                      icon: const Icon(Icons.refresh, color: Colors.white),
+                      onPressed: () {
+                        // Add action for password reset
+                      },
+                    ),
                   ),
                 ],
-                onChanged: (value) {
-                  setState(() {
-                    _selectedLocation = value;
-                  });
-                },
-                decoration: const InputDecoration(
-                  labelText: 'Location',
-                  border: OutlineInputBorder(),
-                ),
               ),
+              const SizedBox(height: 20),
+
+              // Location Dropdown
+              const Text(
+                'Location',
+                style: TextStyle(fontSize: 14),
+              ),
+              const SizedBox(height: 8),
+              DropdownButtonFormField<String>(
+                value: 'Minuwangoda',
+                items: <String>['Minuwangoda', 'Colombo', 'Kandy', 'Galle']
+                    .map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(
+                      value,
+                      style: const TextStyle(color: Color.fromRGBO(152, 160, 228, 1)),
+                    ),
+                  );
+                }).toList(),
+                decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.grey[200],
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide.none,
+                  ),
+                ),
+                style: const TextStyle(color: Colors.red), // Change dropdown text color here
+                onChanged: (String? newValue) {
+                  // Handle location change
+                },
+              ),
+
+              const SizedBox(height: 16),
               const SizedBox(height: 16),
               // Add and Clear Buttons
               Row(
@@ -167,7 +234,7 @@ class _ManageServicesPageState extends State<ManageServicesPage> {
                 children: [
                   SizedBox(
                     width: 150,
-                    height: 45,
+                    height: 43,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.white, // Purple
@@ -190,7 +257,7 @@ class _ManageServicesPageState extends State<ManageServicesPage> {
 
                   SizedBox(
                     width: 150,
-                    height: 45,
+                    height: 43,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Color.fromRGBO(94, 105, 207, 1), // Purple
