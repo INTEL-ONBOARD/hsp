@@ -17,7 +17,8 @@ import 'pages/manage_services_page.dart'; // Added
 import 'pages/order_confirm_sucess.dart';
 import 'pages/order_confirm_page.dart'; //Added later
 import 'pages/settings_page.dart';
-
+import 'pages/marketplace_page.dart';
+import 'package:hsp/pages/new_booking_page.dart';
 
 class AppRoutes {
   // Existing routes
@@ -31,7 +32,8 @@ class AppRoutes {
   static const String plumbing = '/plumbing';
   static const String settingsOk = '/settings-ok';
   static const String settingsFailed = '/settings-failed'; //added later
-
+  static const String settingss = '/settings';
+  static const String booking_ = '/booking';
   // New routes
   static const String settingpage = '/settingpage';
   static const String orderConformSucessfull = '/OrderConformSucessfull';
@@ -42,6 +44,8 @@ class AppRoutes {
   static const String manageServicesOk = '/manage-services-ok';
   static const String manageServicesFailed = '/manage-services-failed';
   static const String report = '/report';
+  static const String marketplace = '/marketplace';
+
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -66,7 +70,28 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const SettingsOkPage());
       case settingsFailed:
         return MaterialPageRoute(builder: (_) => const SettingsFailedPage());
-
+      case intro:
+        return MaterialPageRoute(builder: (_) => const IntroPage());
+      case login:
+        return MaterialPageRoute(builder: (_) => const LoginPage());
+      case register:
+        return MaterialPageRoute(builder: (_) => const RegisterPage());
+      case home:
+        return MaterialPageRoute(builder: (_) => const HomePage());
+      case airConditions:
+        return MaterialPageRoute(builder: (_) => const AirConditionsHomePage());
+      case homeCleaning:
+        return MaterialPageRoute(builder: (_) => const HomeCleaningPage());
+      case painting:
+        return MaterialPageRoute(builder: (_) => const PaintingPage());
+      case plumbing:
+        return MaterialPageRoute(builder: (_) => const PlumbingPage());
+      case settingss:
+        return MaterialPageRoute(builder: (_) => const SettingsPage());
+      case booking_:
+        return MaterialPageRoute(builder: (_) => const BookingPage());
+      case marketplace:
+        return MaterialPageRoute(builder: (_) => const MarketPlacePage());
       // New cases
       case settingpage:
         return MaterialPageRoute(builder: (_) => const SettingsPage());

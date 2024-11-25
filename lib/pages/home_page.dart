@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:hsp/widgets/custom_navigation_bar.dart'; // Import the custom navigation bar
 import 'airconditions_page.dart';
-import 'home_cleaning-page.dart'; // Corrected the file name
-import 'painting.page.dart'; // Corrected the file name
+import 'home_cleaning-page.dart';
+import 'painting.page.dart';
 import 'plumbing_page.dart';
-import 'settings_ok_page.dart'; // Correct import for SettingsOkPage
-
+import 'settings_page.dart'; // Import settings page
+import 'new_booking_page.dart';  // Import booking page
+import 'marketplace_page.dart';  // Import booking page
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -15,12 +17,14 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
 
+  // List of pages corresponding to the bottom navigation items
   final List<Widget> _pages = [
-    const MarketPlacePage(),
-    const BookingPage(),
-    //const SettingsPage(),
+    const MarketPlacePage(),  // Market Place Page
+    const BookingPage(),      // Booking Page
+    const SettingsPage(),     // Settings Page
   ];
 
+  // Function to set AppBar title dynamically based on the current index
   String _getAppBarTitle() {
     switch (_currentIndex) {
       case 1:
@@ -37,16 +41,15 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        toolbarHeight: 120, // Set a custom height for the AppBar
-        automaticallyImplyLeading: false, // Remove the back button
+        toolbarHeight: 120,
+        automaticallyImplyLeading: false,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Padding(
-              padding: const EdgeInsets.only(
-                  left: 16.0), // Padding on the left for the text
+              padding: const EdgeInsets.only(left: 16.0),
               child: Text(
-                _getAppBarTitle(), // Dynamic title based on the current tab
+                _getAppBarTitle(),
                 style: const TextStyle(
                   fontWeight: FontWeight.normal,
                   fontSize: 22,
@@ -54,8 +57,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(
-                  right: 16.0), // Padding on the right for the icon
+              padding: const EdgeInsets.only(right: 16.0),
               child: Image.asset(
                 'lib/assets/notification-bell.png',
                 width: 24,
@@ -65,178 +67,26 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
         bottom: const PreferredSize(
-          preferredSize: Size.fromHeight(1.0), // Height of the Divider
+          preferredSize: Size.fromHeight(1.0),
           child: Divider(
-            color: Color.fromRGBO(233, 233, 233, 1), // Set the color to grey
-            thickness: 1, // Set the thickness of the line
+            color: Color.fromRGBO(233, 233, 233, 1),
+            thickness: 1,
           ),
         ),
       ),
-      body: _pages[_currentIndex], // Display the corresponding page
-      bottomNavigationBar: Theme(
-        data: Theme.of(context).copyWith(
-          bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-            selectedLabelStyle:
-                TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-            unselectedLabelStyle:
-                TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
-            selectedItemColor: Colors.white, // Text color for the selected item
-            unselectedItemColor:
-                Colors.white70, // Text color for unselected items
-          ),
-        ),
-        child: SizedBox(
-          height: 100, // Custom height for the BottomNavigationBar
-          child: BottomNavigationBar(
-            currentIndex: _currentIndex,
-            backgroundColor: const Color.fromRGBO(94, 105, 207, 1),
-            onTap: (index) {
-              setState(() {
-                _currentIndex =
-                    index; // Update the index when an item is tapped
-              });
-            },
-            items: [
-              BottomNavigationBarItem(
-                icon: Padding(
-                  padding: const EdgeInsets.only(
-                      bottom: 4.0), // Adds margin between icon and label
-                  child: Image.asset(
-                    'lib/assets/market-place.png',
-                    width: 28,
-                    height: 28,
-                  ),
-                ),
-                label: 'Market Place',
-              ),
-              BottomNavigationBarItem(
-                icon: Padding(
-                  padding: const EdgeInsets.only(
-                      bottom: 4.0), // Adds margin between icon and label
-                  child: Image.asset(
-                    'lib/assets/booking.png',
-                    width: 28,
-                    height: 28,
-                  ),
-                ),
-                label: 'Booking',
-              ),
-              BottomNavigationBarItem(
-                icon: Padding(
-                  padding: const EdgeInsets.only(
-                      bottom: 4.0), // Adds margin between icon and label
-                  child: Image.asset(
-                    'lib/assets/settings.png',
-                    width: 28,
-                    height: 28,
-                  ),
-                ),
-                label: 'Settings',
-              ),
-            ],
-          ),
-        ),
+      body: _pages[_currentIndex],  // Load the corresponding page
+      bottomNavigationBar: CustomNavigationBar(
+        currentIndex: _currentIndex,
+        onTap: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
       ),
     );
   }
 }
 
-class MarketPlacePage extends StatelessWidget {
-  const MarketPlacePage({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Expanded(
-          child: GridView.count(
-            crossAxisCount: 2,
-            padding: const EdgeInsets.all(26),
-            crossAxisSpacing: 8, // Space between columns
-            mainAxisSpacing: 8,
-            children: [
-              _buildServiceCard(
-                context,
-                'Air Conditioning',
-                'lib/assets/air-conditioning.png', // Path to the image
-                '/airconditions',
-              ),
-              _buildServiceCard(
-                context,
-                'Home Cleaning',
-                'lib/assets/cleaning.png', // Path to the image
-                '/home-cleaning',
-              ),
-              _buildServiceCard(
-                context,
-                'Painting',
-                'lib/assets/painting.png', // Path to the image
-                '/painting',
-              ),
-              _buildServiceCard(
-                context,
-                'Plumbing',
-                'lib/assets/plumbing.png', // Path to the image
-                '/plumbing',
-              ),
-            ],
-          ),
-        ),
-      ],
-    );
-  }
 
-  Widget _buildServiceCard(
-      BuildContext context, String title, String imagePath, String route) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.pushNamed(context, route);
-      },
-      child: Card(
-        color: Colors.white,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-          side: const BorderSide(
-            color: Color.fromRGBO(232, 232, 232, 1),
-            width: 1,
-          ),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(
-              imagePath, // Use the provided image path
-              width: 50,
-              height: 50,
-              fit: BoxFit.contain,
-            ),
-            const SizedBox(height: 10),
-            Text(
-              title,
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.normal,
-                color: Color.fromRGBO(94, 105, 207, 1),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class BookingPage extends StatelessWidget {
-  const BookingPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(
-      child: Text(
-        'Booking Page',
-        style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-      ),
-    );
-  }
-}
 
