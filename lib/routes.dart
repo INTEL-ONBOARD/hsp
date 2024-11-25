@@ -15,6 +15,7 @@ import 'pages/manage_orders_page.dart'; // Added
 import 'pages/view_services_page.dart'; // Added
 import 'pages/manage_services_page.dart'; // Added
 import 'pages/order_conform_sucessfull.dart';
+import 'pages/order_confirm_page.dart'; //Added later
 
 
 class AppRoutes {
@@ -33,6 +34,7 @@ class AppRoutes {
   // New routes
   static const String orderConformSucessfull = '/OrderConformSucessfull';
   static const String manageOrders = '/manage-orders';
+  static const String confirmOrders = '/confirm-orders'; //added later
   static const String viewServices = '/view-services';
   static const String manageServices = '/manage-services';
   static const String manageServicesOk = '/manage-services-ok';
@@ -69,6 +71,8 @@ class AppRoutes {
 
       case manageOrders:
         return MaterialPageRoute(builder: (_) => const ManageOrdersPage());
+      case confirmOrders:
+        return MaterialPageRoute(builder: (_) => const OrderConfirmPage());
 
       case viewServices:
         return MaterialPageRoute(builder: (_) => const ViewServicesPage());
