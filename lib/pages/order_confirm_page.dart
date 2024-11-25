@@ -125,9 +125,6 @@ class _ScheduleDateConfirmationState extends State<ScheduleDateConfirmation> {
                 ),
 */
 
-
-
-
                 const SizedBox(height: 8),
                 // Display Selected Date
                 if (_selectedDate != null)
