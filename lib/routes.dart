@@ -36,7 +36,7 @@ class AppRoutes {
   static const String booking_ = '/booking';
   // New routes
   static const String settingpage = '/settingpage';
-  static const String orderConformSucessfull = '/OrderConformSucessfull';
+  static const String orderConformSucessfull = '/order-confirm-successful';
   static const String manageOrders = '/manage-orders';
   static const String confirmOrders = '/confirm-orders'; //added later
   static const String viewServices = '/view-services';

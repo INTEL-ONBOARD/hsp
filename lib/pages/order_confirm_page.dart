@@ -128,6 +128,7 @@ class _OrderConfirmPageState extends State<OrderConfirmPage> {
                   ),
                   onPressed: () {
                     // Handle "Place Order" button action
+                    Navigator.pushNamed(context, '/order-confirm-successful');
                   },
                   child: const Text(
                     'Place Order',
