@@ -17,6 +17,7 @@ import 'pages/manage_services_page.dart'; // Added
 import 'pages/order_conform_sucessfull.dart';
 import 'pages/order_confirm_page.dart'; //Added later
 import 'pages/settings_page.dart';
+import 'pages/settings_ok_page.dart';
 
 class AppRoutes {
   // Existing routes
@@ -32,7 +33,7 @@ class AppRoutes {
   static const String settingsFailed = '/settings-failed'; //added later
 
   // New routes
-  static const String settings = '/settings';
+  static const String settingpage = '/settingpage';
   static const String orderConformSucessfull = '/OrderConformSucessfull';
   static const String manageOrders = '/manage-orders';
   static const String confirmOrders = '/confirm-orders'; //added later
@@ -67,7 +68,7 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const SettingsFailedPage());
 
       // New cases
-      case settings:
+      case settingpage:
         return MaterialPageRoute(builder: (_) => const SettingsPage());
 
       case orderConformSucessfull:
