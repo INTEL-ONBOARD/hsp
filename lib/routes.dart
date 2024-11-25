@@ -12,6 +12,7 @@ import 'pages/settings_fail_page.dart';
 import 'pages/manage_orders_page.dart'; // Added
 import 'pages/view_services_page.dart'; // Added
 import 'pages/manage_services_page.dart'; // Added
+import 'pages/order_conform_sucessfull.dart';
 
 
 class AppRoutes {
@@ -28,6 +29,7 @@ class AppRoutes {
   static const String settingsFailed = '/settings-failed'; //added later
 
   // New routes
+  static const String orderConformSucessfull = '/OrderConformSucessfull';
   static const String manageOrders = '/manage-orders';
   static const String viewServices = '/view-services';
   static const String manageServices = '/manage-services';
@@ -58,13 +60,17 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const SettingsFailedPage());
 
       // New cases
+      case orderConformSucessfull:
+        return MaterialPageRoute(builder: (_) => const OrderConformSucessfull());
+
       case manageOrders:
         return MaterialPageRoute(builder: (_) => const ManageOrdersPage());
+
       case viewServices:
         return MaterialPageRoute(builder: (_) => const ViewServicesPage());
       case manageServices:
         return MaterialPageRoute(builder: (_) => const ManageServicesPage());
-      
+
 
       // Default case
       default:
