@@ -7,8 +7,8 @@ class CustomNavigationBar extends StatelessWidget {
   const CustomNavigationBar({
     required this.currentIndex,
     required this.onTap,
-    super.key,
-  });
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +16,18 @@ class CustomNavigationBar extends StatelessWidget {
       currentIndex: currentIndex,
       onTap: onTap,
       items: const [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-        BottomNavigationBarItem(icon: Icon(Icons.person), label: 'User'),
-        BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Settings'),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.store), // Icon for Market Place
+          label: 'Market Place',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.book_online), // Icon for Booking
+          label: 'Booking',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.settings), // Icon for Settings
+          label: 'Settings',
+        ),
       ],
     );
   }
