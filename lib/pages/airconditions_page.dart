@@ -55,7 +55,7 @@ class _AirConditionsHomePageState extends State<AirConditionsHomePage> {
               padding: const EdgeInsets.only(
                   left: 16.0), // Padding on the left for the text
               child: Text(
-                "Painting", // Dynamic title based on the current tab
+                "Air Conditioning", // Dynamic title based on the current tab
                 style: const TextStyle(
                   fontWeight: FontWeight.normal,
                   fontSize: 22,
@@ -175,6 +175,7 @@ class _AirConditionsHomePageState extends State<AirConditionsHomePage> {
                             ),
                             onPressed: () {
                               // Handle booking action
+                              Navigator.pushNamed(context, '/confirm-orders');
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   content: Text(

@@ -14,7 +14,7 @@ import 'pages/settings_fail_page.dart';
 import 'pages/manage_orders_page.dart'; // Added
 import 'pages/view_services_page.dart'; // Added
 import 'pages/manage_services_page.dart'; // Added
-import 'pages/order_conform_sucessfull.dart';
+import 'pages/order_confirm_sucess.dart';
 import 'pages/order_confirm_page.dart'; //Added later
 import 'pages/settings_page.dart';
 

@@ -1,7 +1,45 @@
 import 'package:flutter/material.dart';
 
-class PaintingPage extends StatelessWidget {
+class PaintingPage extends StatefulWidget {
   const PaintingPage({super.key});
+
+  @override
+  _PaintingPageState createState() => _PaintingPageState();
+}
+
+class _PaintingPageState extends State<PaintingPage> {
+  final int _currentIndex = 0; // For managing the bottom navigation
+
+  final List<Map<String, dynamic>> workers = const [
+    {
+      "name": "John Doe",
+      "city": "Minuangoda",
+      "rating": 4.5,
+      "description": "Experienced MAINLY AC technician with 5+  years of experience. Experienced AC technician with 5+  years of experience. Experienced AC technician with 5+  years of experience. Experienced AC technician with 5+  years of experience.",
+      "price": "500000",
+    },
+    {
+      "name": "Jane Smith",
+      "city": "Minuangoda",
+      "rating": 4.8,
+      "description": "Specialist in quick repairs and installations.",
+      "price": "55",
+    },
+    {
+      "name": "Robert Brown",
+      "city": "Minuangoda",
+      "rating": 4.6,
+      "description": "Affordable and reliable AC repair services.",
+      "price": "4500",
+    },
+  ];
+
+  // Bottom Navigation Pages
+  final List<Widget> _pages = [
+    const Text("Home Page Content"), // Placeholder for Home Page
+    const Text("Settings Page Content"), // Placeholder for Settings Page
+    const Text("Profile Page Content"), // Placeholder for Profile Page
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -45,100 +83,124 @@ class PaintingPage extends StatelessWidget {
           ),
         ),
       ),
-
-      body: const ScheduleDateConfirmation(),
-    );
-  }
-}
-
-class ScheduleDateConfirmation extends StatelessWidget {
-  const ScheduleDateConfirmation({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
       body: Padding(
-        padding: const EdgeInsets.all(30),
-        child: Container(
-          decoration: BoxDecoration(
-            color: const Color.fromRGBO(249, 249, 249, 1),
-            border: Border.all(
-              color: const Color.fromRGBO(249, 249, 249, 1),
-              width: 2, // Border width
-            ),
-            borderRadius: BorderRadius.circular(16),
-          ),
-          child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-
-
-
-                  const Text(
-                    "Confirm schedule Date?",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400, color: Colors.black),),
-                  //const SizedBox(height: 24,),
-                  // Date dropdown?
-
-                  const SizedBox(height: 8, width: 10,),
-                  DropdownButtonFormField<String>(
-                    value: 'Minuwangoda',
-                    items: <String>['Minuwangoda', 'Colombo', 'Kandy', 'Galle']
-                        .map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
-                    decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Colors.grey[200],
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide.none,
+        padding: const EdgeInsets.all(20.0), // Add padding here
+        child: ListView.builder(
+          itemCount: workers.length,
+          itemBuilder: (context, index) {
+            final worker = workers[index];
+            return Card(
+              color: const Color.fromRGBO(249, 249, 249, 1), //242, 242, 242, 1 for border
+              margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16),
+                side: const BorderSide(
+                  color: Color.fromRGBO(242, 242, 242, 1),
+                  width: 1,
+                ),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Left Column
+                    Expanded(
+                      flex: 2, // Adjust the space taken by the left column
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            worker['name'],
+                            style: const TextStyle(
+                              fontSize: 25,
+                              fontWeight: FontWeight.normal,
+                            ),
+                          ),
+                          Text(
+                            worker['city'],
+                            style: const TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.normal,
+                              color: Color.fromRGBO(156, 156, 156, 1),
+                            ),
+                          ),
+                          const SizedBox(height: 8),
+                          Text(
+                            worker['description'],
+                            style: const TextStyle(fontSize: 14, color: Color.fromRGBO(218, 218, 218, 1)),
+                          ),
+                        ],
                       ),
                     ),
-                    onChanged: (String? newValue) {
-                      // Handle location change
-                    },
-                  ),
+                    const SizedBox(width: 16), // Space between columns
 
+                    // Right Column
+                    Expanded(
+                      flex: 1, // Adjust the space taken by the right column
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              const Icon(Icons.star, color: Colors.amber),
+                              const SizedBox(width: 4),
+                              Text(
+                                "${worker['rating']}",
+                                style: const TextStyle(fontSize: 16, color: Color.fromRGBO(251, 116, 75, 1)),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 22),
+                          Text(
+                            "Rs. ${worker['price']}+",
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.normal,
+                            ),
+                          ),
 
-                  const SizedBox(height: 12,),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.white,
-                      backgroundColor: const Color.fromRGBO(94, 105, 207, 1),
-                      side: const BorderSide(color: Color.fromRGBO(94, 105, 207, 1), width: 1),
-                      minimumSize: const Size(280, 45), // Button size
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8),),
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: const Color.fromRGBO(249, 249, 249, 1),
+                              minimumSize: const Size(double.infinity, 50),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8),
+                                side: const BorderSide( // Border color and width
+                                  color: Color.fromRGBO(225, 225, 225, 1), // Set border color to red
+                                  width: 2, // Set border width
+                                ),
+                              ),
+                            ),
+                            onPressed: () {
+                              // Handle booking action
+                              Navigator.pushNamed(context, '/confirm-orders');
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    "Booked ${worker['name']}",
+                                    style: const TextStyle(fontSize: 16),
+                                  ),
+                                ),
+                              );
+                            },
+                            child: const Text(
+                              'Order',
+                              style: TextStyle(color: Color.fromRGBO(89, 89, 89, 1)),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                    onPressed: () {
-                      // Handle "Done" button action
-                    },
-                    child: const Text('Place Order', style: TextStyle(fontSize: 18, fontWeight: FontWeight.normal,),
-                    ),
-                  ),
-                  const SizedBox(height: 12,),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: Color.fromRGBO(94, 105, 207, 1),
-                      backgroundColor: Colors.white,
-                      side: const BorderSide(color: Color.fromRGBO(94, 105, 207, 1), width: 1),
-                      minimumSize: const Size(280, 45), // Button size
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8),),
-                    ),
-                    onPressed: () {
-                      // Handle "Done" button action
-                    },
-                    child: const Text('Go Back', style: TextStyle(fontSize: 18, fontWeight: FontWeight.normal,),
-                    ),
-                  ),
-                ],
-              )),
+                  ],
+                ),
+              ),
+            );
+          },
         ),
-      ), // padding
+      ),
     );
-  }}
+  }
 
+}
