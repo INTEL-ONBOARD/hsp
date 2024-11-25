@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hsp/pages/manage_services_failed_page.dart';
+import 'package:hsp/pages/manage_services_ok_page.dart';
 import 'pages/intro_page.dart';
 import 'pages/login_page.dart';
 import 'pages/register_page.dart';
@@ -33,6 +35,8 @@ class AppRoutes {
   static const String manageOrders = '/manage-orders';
   static const String viewServices = '/view-services';
   static const String manageServices = '/manage-services';
+  static const String manageServicesOk = '/manage-services-ok';
+  static const String manageServicesFailed = '/manage-services-failed';
   static const String report = '/report';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -70,6 +74,10 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const ViewServicesPage());
       case manageServices:
         return MaterialPageRoute(builder: (_) => const ManageServicesPage());
+      case manageServicesOk:
+        return MaterialPageRoute(builder: (_) => const ManageServicesOkPage());
+      case manageServicesFailed:
+        return MaterialPageRoute(builder: (_) => const ManageServicesFailedPage());
 
 
       // Default case

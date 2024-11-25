@@ -246,7 +246,7 @@ class _ManageServicesPageState extends State<ManageServicesPage> {
                       ),
                       onPressed: () {
                         // Navigate to settings_ok_page.dart
-                        Navigator.pushNamed(context, '/settings-ok');
+                        Navigator.pushNamed(context, '/manage-services-ok');
                       },
                       child: const Text(
                         'Add',
@@ -268,7 +268,7 @@ class _ManageServicesPageState extends State<ManageServicesPage> {
                       ),
                       onPressed: () {
                         // Navigate to settings_ok_page.dart
-                        Navigator.pushNamed(context, '/settings-failed');
+                        Navigator.pushNamed(context, '/manage-services-failed');
                       },
                       child: const Text(
                         'Clear',
